@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Clothing Admin Dashboard</title>
+    <title> Admin Dashboard</title>
     @vite('resources/css/app.css')
 </head>
 <body class="bg-gray-100 flex">
 
     <!-- Sidebar -->
     <aside class="w-64 bg-black text-white min-h-screen p-5">
-        <h2 class="text-2xl font-bold mb-8">Clothing Admin</h2>
+        <h2 class="text-2xl font-bold mb-8">RugMaster</h2>
         <ul class="space-y-4">
             <li><a href="#" class="hover:text-gray-300">Dashboard</a></li>
             <li><a href="#" class="hover:text-gray-300">Products</a></li>
@@ -81,3 +81,4 @@
 
 </body>
 </html>
+
