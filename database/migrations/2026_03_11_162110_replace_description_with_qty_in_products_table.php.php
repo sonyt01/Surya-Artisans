@@ -15,7 +15,7 @@ return new class extends Migration {
 
             // Add 'qty' if it doesn't exist
             if (!Schema::hasColumn('products', 'qty')) {
-                $table->integer('qty')->default(1);
+                $table->integer('qty')->default(1)->after('name');
             }
         });
     }

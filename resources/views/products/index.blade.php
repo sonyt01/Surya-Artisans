@@ -95,7 +95,7 @@
 
         <h2>RugMaster</h2>
 
-        <a href="/dashboard">Dashboard</a>
+        <!-- <a href="/dashboard">Dashboard</a> -->
         <a href="/products">Products</a>
         <a href="#">Orders</a>
         <a href="#">Customers</a>

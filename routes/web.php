@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 
@@ -9,19 +9,22 @@ Route::get('/',function(){
     return view('welcome');
 });
 
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'authenticate']);
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-
-// Example of a protected page
-
-Route::get('/dashboard', function () {
-    return "Welcome to your Clothing Store Dashboard!";
-})->middleware('auth')->name('dashboard');
-
-Route::get('/dashboard', function(){
-    return view('dashboard');
+// Authentication routes
+Route::get('/login', function () {
+    return view('login');
 });
+
+Route::post('/login', [AuthController::class, 'login']);
+
+// // Example of a protected page
+
+// Route::get('/dashboard', function () {
+//     return "Welcome to your Clothing Store Dashboard!";
+// })->middleware('auth')->name('dashboard');
+
+// Route::get('/dashboard', function(){
+//     return view('dashboard');
+// });
 
 // Product routes
 Route::get('/products', [ProductController::class,'index'])->name('products.index');
