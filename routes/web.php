@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 
 //home page
-Route::get('/',function(){
+Route::get('/welcome',function(){
     return view('welcome');
 });
 
@@ -16,15 +16,15 @@ Route::get('/login', function () {
 
 Route::post('/login', [AuthController::class, 'login']);
 
-// // Example of a protected page
+// Example of a protected page
 
-// Route::get('/dashboard', function () {
-//     return "Welcome to your Clothing Store Dashboard!";
-// })->middleware('auth')->name('dashboard');
+Route::get('/dashboard', function () {
+    return "Welcome to your Clothing Store Dashboard!";
+})->middleware('auth')->name('dashboard');
 
-// Route::get('/dashboard', function(){
-//     return view('dashboard');
-// });
+Route::get('/dashboard', function(){
+    return view('dashboard');
+});
 
 // Product routes
 Route::get('/products', [ProductController::class,'index'])->name('products.index');
