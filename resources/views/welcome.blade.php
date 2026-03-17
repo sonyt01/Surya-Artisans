@@ -6,12 +6,11 @@
 </head>
 
 <body>
-
 <div class="relative overflow-hidden bg-white">
   <div class="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
     <div class="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
       <div class="sm:max-w-lg">
-        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Surya Artisan</h1>
+        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Surya Artisans</h1>
         <p class="mt-4 text-xl text-gray-500">Where tradition, craftsmanship, and elegance are woven into every rug.</p>
       </div>
       <div>
@@ -51,7 +50,7 @@
             </div>
           </div>
 
-          <a href="#" class="inline-block rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-center font-medium text-white hover:bg-indigo-700">Shop Collection</a>
+          <a href="/products" class="inline-block rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-center font-medium text-white hover:bg-indigo-700">Shop Collection</a>
         </div>
       </div>
     </div>

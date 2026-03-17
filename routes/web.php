@@ -18,15 +18,22 @@ Route::post('/login', [AuthController::class, 'login']);
 
 // Example of a protected page
 
-Route::get('/dashboard', function () {
-    return "Welcome to your Clothing Store Dashboard!";
-})->middleware('auth')->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return "Welcome to your Clothing Store Dashboard!";
+// })->middleware('auth')->name('dashboard');
 
 Route::get('/dashboard', function(){
     return view('dashboard');
 });
 
 // Product routes
-Route::get('/products', [ProductController::class,'index'])->name('products.index');
-Route::get('/products/create', [ProductController::class,'create'])->name('products.create');
-Route::post('/products', [ProductController::class,'store'])->name('products.store');
+Route::get('/products', function () {
+    return view('products.index');
+})->name('products');
+
+Route::get('/welcome', function () {
+    return view('welcome');
+})->name('home');  // ✅ This defines the route name "home"
+
+
+
