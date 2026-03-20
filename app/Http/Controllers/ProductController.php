@@ -1,37 +1,43 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Models\Product;
 
 class ProductController extends Controller
 {
-    //show all products
-    public function index() {
+    // Admin: show all products
+    public function adminIndex()
+    {
         $products = Product::all();
-        return view('products.index', compact('products'));
+        return view('product', compact('products'));
     }
 
-    //show create product form
-    public function create(){
-        return view('products.create');
+    // Admin: search products
+    public function adminSearch(Request $request)
+    {
+        $query = $request->input('query');
+        $products = Product::where('name', 'LIKE', "%{$query}%")
+                            ->orWhere('description', 'LIKE', "%{$query}%")
+                            ->get();
+        return view('product', compact('products'));
     }
 
-    //store product
-    public function store(Request $request){
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'qty' => 'required|integer',
-            'price' => 'required|decimal:2',
-
-        ]);
-
-        // Save the product to the database
-        Product::create([
-            'name' => $request->name,
-            'qty' => $request->qty,
-            'price' => $request->price,
-        ]);
-        return redirect()->route('products')->with('success', 'Product created successfully.');
+    // User: show all products
+    public function userIndex()
+    {
+        $products = Product::all();
+        return view('productsView', compact('products'));
     }
 
+    // User: search products
+    public function userSearch(Request $request)
+    {
+        $query = $request->input('query');
+        $products = Product::where('name', 'LIKE', "%{$query}%")
+                            ->orWhere('description', 'LIKE', "%{$query}%")
+                            ->get();
+        return view('productsView', compact('products'));
+    }
 }

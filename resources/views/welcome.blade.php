@@ -1,62 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="dark">
 <head>
+    <meta charset="UTF-8">
     <title>Welcome</title>
     @vite('resources/css/app.css')
 </head>
 
-<body>
-<div class="relative overflow-hidden bg-white">
-  <div class="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
-    <div class="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
-      <div class="sm:max-w-lg">
-        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Surya Artisans</h1>
-        <p class="mt-4 text-xl text-gray-500">Where tradition, craftsmanship, and elegance are woven into every rug.</p>
-      </div>
-      <div>
-        <div class="mt-10">
-          <!-- Decorative image grid -->
-          <div aria-hidden="true" class="pointer-events-none lg:absolute lg:inset-y-0 lg:mx-auto lg:w-full lg:max-w-7xl">
-            <div class="absolute transform sm:top-0 sm:left-1/2 sm:translate-x-8 lg:top-1/2 lg:left-1/2 lg:translate-x-8 lg:-translate-y-1/2">
-              <div class="flex items-center space-x-6 lg:space-x-8">
-                <div class="grid shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                  <div class="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
-                    <img src="images/carpet1.jpg" alt="" class="size-full object-cover" />
-                  </div>
-                  <div class="h-64 w-44 overflow-hidden rounded-lg">
-                    <img src="images/carpet2.jpg" alt="" class="size-full object-cover" />
-                  </div>
-                </div>
-                <div class="grid shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                  <div class="h-64 w-44 overflow-hidden rounded-lg">
-                    <img src="images/carpet3.jpg" alt="" class="size-full object-cover" />
-                  </div>
-                  <div class="h-64 w-44 overflow-hidden rounded-lg">
-                    <img src="images/carpet4.jpg" alt="" class="size-full object-cover" />
-                  </div>
-                  <div class="h-64 w-44 overflow-hidden rounded-lg">
-                    <img src="images/carpet5.jpg" alt="" class="size-full object-cover" />
-                  </div>
-                </div>
-                <div class="grid shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                  <div class="h-64 w-44 overflow-hidden rounded-lg">
-                    <img src="images/carpet6.jpg" alt="" class="size-full object-cover" />
-                  </div>
-                  <div class="h-64 w-44 overflow-hidden rounded-lg">
-                    <img src="images/carpet7.jpg" alt="" class="size-full object-cover" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+<body class="bg-[#FFF8F0] dark:bg-gray-900 transition-colors duration-300">
 
-          <a href="/products" class="inline-block rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-center font-medium text-white hover:bg-indigo-700">Shop Collection</a>
-        </div>
-      </div>
+<div class="min-h-screen flex flex-col md:flex-row">
+
+    <!-- LEFT SIDE -->
+    <div class="md:w-1/2 flex flex-col justify-center px-6 sm:px-16 py-12 md:py-0">
+        <h1 class="text-4xl sm:text-5xl font-bold text-[#800000] dark:text-yellow-400 font-serif">
+            Surya Artisans
+        </h1>
+
+        <p class="mt-6 text-lg text-gray-700 dark:text-gray-300">
+            Where tradition, craftsmanship, and elegance are woven into every rug.
+        </p>
+
+        <a href="/home"
+           class="inline-block mt-8 w-fit rounded-md bg-[#800000] dark:bg-yellow-600 px-6 sm:px-8 py-3 text-white font-medium hover:bg-[#660000] dark:hover:bg-yellow-500 transition">
+            Shop Collection
+        </a>
     </div>
-  </div>
-</div>
 
+    <!-- RIGHT SIDE -->
+    <div class="md:w-1/2">
+        <img src="{{ asset('images/carpet1.jpg') }}"
+             alt="Carpet"
+             class="w-full h-64 sm:h-96 md:h-screen object-cover">
+    </div>
+
+</div>
 
 </body>
 </html>
