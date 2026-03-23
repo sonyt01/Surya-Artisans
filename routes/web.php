@@ -17,6 +17,7 @@ Route::get('/login', function () {
     return view('login');
 });
 
+Route::post('/login', [AuthController::class, 'login']);
 // Route::post('/login', [AuthController::class, 'login']);
 
 //Registration route
@@ -33,6 +34,10 @@ Route::get('/dashboard', function(){
     return view('dashboard');
 });
 
+// Product routes
+Route::get('/products', function () {
+    return view('products.index');
+})->name('products');
 // ProductView routes
 Route::get('/productsView', function () {
     return view('productsView.view');
@@ -63,8 +68,8 @@ Route::get('/cart', [CartController::class, 'view'])->name('cart.view');
 
 // Show Cart page
 Route::post('/cart/update/{index}', [CartController::class, 'update'])->name('cart.update');
-Route::post('/cart/remove/{index}', [CartController::class, 'remove'])->name('cart.remove');
 Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout'); // optional
+Route::post('/cart/remove/{index}', [CartController::class, 'remove'])->name('cart.remove');
 
 //home page
 Route::get('/home', function () {
@@ -82,3 +87,4 @@ Route::get('/dashboard/products/search', [ProductController::class, 'adminSearch
 
 Route::get('/products', [ProductController::class, 'userIndex'])->name('products.index');
 Route::get('/products/search', [ProductController::class, 'userSearch'])->name('products.search');
+

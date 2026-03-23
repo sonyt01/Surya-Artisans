@@ -15,8 +15,7 @@
         Your Cart
     </h1>
 
-    @if(session('cart') && count(session('cart')) > 0)
-        <div class="overflow-x-auto">
+    @if(session('cart') && count(session('cart')) > 0)<div class="overflow-x-auto">
             <table class="w-full text-left border border-gray-300 rounded-lg">
                 <thead class="bg-gray-100">
                     <tr>
@@ -33,24 +32,26 @@
                         @php $total = $item['price'] * ($item['quantity'] ?? 1); $grandTotal += $total; @endphp
                         <tr class="border-t border-gray-300">
                             <td class="p-4 flex items-center space-x-4">
-                                <img src="{{ asset($item['image']) }}" class="w-20 h-20 object-cover rounded-lg">
-                                <span>{{ $item['name'] }}</span>
+                                <img src="{{ asset(Auth::check() ? $item->image : $item['image']) }}" class="w-20 h-20 object-cover rounded-lg">
+                                <span>{{ Auth::check() ? $item->name : $item['name'] }}</span>
                             </td>
-                            <td class="p-4">${{ $item['price'] }}</td>
+                            <td class="p-4">${{ Auth::check() ? $item->price : $item['price'] }}</td>
                             <td class="p-4">
                                 <form action="{{ route('cart.update', $index) }}" method="POST">
                                     @csrf
-                                    <input type="number" name="quantity" value="{{ $item['quantity'] ?? 1 }}" min="1" class="w-16 border rounded-lg px-2 py-1">
+                                    <input type="number" name="quantity" value="{{ Auth::check() ? $item->quantity : $item['quantity'] }}"
+                                        min="1" class="w-16 border rounded-lg px-2 py-1">
                                     <button type="submit" class="ml-2 px-3 py-1 bg-[#800000] text-white rounded-lg hover:bg-[#660000] transition">Update</button>
                                 </form>
                             </td>
                             <td class="p-4">${{ $total }}</td>
                             <td class="p-4">
                                 <form action="{{ route('cart.remove', $index) }}" method="POST">
-                                    @csrf
-                                    <button type="submit" class="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 transition">
-                                        Remove
-                                    </button>
+                                @csrf
+                                 <button type="submit"
+                                class="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600">
+                                    Remove
+                                </button>
                                 </form>
                             </td>
                         </tr>
@@ -61,7 +62,7 @@
 
         <div class="mt-6 flex justify-end items-center space-x-6">
             <span class="text-xl font-semibold">Grand Total: ${{ $grandTotal }}</span>
-            <a href="{{ route('checkout') }}" class="px-6 py-3 bg-[#800000] text-white rounded-lg hover:bg-[#660000] transition">
+            <a href="{{ route('register') }}" class="px-6 py-3 bg-[#800000] text-white rounded-lg hover:bg-[#660000] transition">
                 Checkout
             </a>
         </div>
