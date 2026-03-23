@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use App\Models\Cart;
 
 
 class CartController extends Controller {
@@ -55,15 +57,28 @@ class CartController extends Controller {
         return redirect()->back()->with('success', 'Cart updated!');
     }
 
-    // Remove item
-    public function remove($index) {
-        $cart = Session::get('cart', []);
-        if(isset($cart[$index])) {
-            array_splice($cart, $index, 1);
-            Session::put('cart', $cart);
-        }
-        return redirect()->back()->with('success', 'Item removed from cart!');
+    public function index()
+{
+    if (Auth::check()) {
+        $cart = Cart::where('user_id', Auth::id())->get();
+        return view('cart', compact('cart'));
+    } else {
+        $cart = session()->get('cart', []);
+        return view('cart', compact('cart'));
     }
+}
+    // Remove item from cart
+    public function remove($index)
+{
+    $cart = session()->get('cart', []);
+
+    if (isset($cart[$index])) {
+        unset($cart[$index]);
+        session()->put('cart', $cart);
+    }
+
+    return redirect()->back()->with('success', 'Item removed from cart');
+}
 
     // Checkout page (optional)
     public function checkout() {

@@ -40,4 +40,6 @@ class ProductController extends Controller
                             ->get();
         return view('productsView', compact('products'));
     }
+
+
 }

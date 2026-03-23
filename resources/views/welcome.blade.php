@@ -20,7 +20,7 @@
             Where tradition, craftsmanship, and elegance are woven into every rug.
         </p>
 
-        <a href="/home"
+        <a href="{{ route('home') }}"
            class="inline-block mt-8 w-fit rounded-md bg-[#800000] dark:bg-yellow-600 px-6 sm:px-8 py-3 text-white font-medium hover:bg-[#660000] dark:hover:bg-yellow-500 transition">
             Shop Collection
         </a>
